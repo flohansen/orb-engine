@@ -1,9 +1,18 @@
-build:
-	mkdir -p target
-	g++ src/main.cpp -o target/main
+CC = gcc
+CXX = g++
 
-run: build
-	target/main
+LDFLAGS = -L/usr/lib
+LDFLAGS += -lglfw
 
+TARGET = main
+cpp_files = src/main.cpp
+objects = $(cpp_files:.cpp=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(objects)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+.PHONY : clean
 clean:
-	rm -rf target
+	rm $(TARGET) $(objects)
