@@ -4,7 +4,7 @@ CXX = g++
 LDFLAGS = -L/usr/lib
 LDFLAGS += -lglfw
 
-TARGET = main
+TARGET = target/main
 cpp_files = src/main.cpp
 objects = $(cpp_files:.cpp=.o)
 
