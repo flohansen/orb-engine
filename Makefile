@@ -1,11 +1,11 @@
 CC = gcc
 CXX = g++
 
-LDFLAGS = -L/usr/lib
+LDFLAGS = 
 LDFLAGS += -lglfw
 
 TARGET = target/main
-cpp_files = src/main.cpp
+cpp_files = src/main.cpp vendor/glad/glad.c
 objects = $(cpp_files:.cpp=.o)
 
 all: $(TARGET)
