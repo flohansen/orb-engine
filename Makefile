@@ -5,7 +5,7 @@ LDFLAGS =
 LDFLAGS += -lglfw
 
 TARGET = target/main
-cpp_files = src/main.cpp vendor/glad/glad.c
+cpp_files = src/main.cpp src/app/window.cpp vendor/glad/glad.c
 objects = $(cpp_files:.cpp=.o)
 
 all: $(TARGET)
