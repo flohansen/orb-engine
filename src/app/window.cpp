@@ -1,22 +1,34 @@
 #include "window.h"
+#include <GLFW/glfw3.h>
 
 namespace orb::app {
 
     Window::Window(unsigned int width, unsigned int height, const char* title) {
+        if (!glfwInit()) {
+            return;
+        }
+
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
         m_wnd = glfwCreateWindow(width, height, title, NULL, NULL);
         if (!m_wnd) {
+            glfwTerminate();
             return;
         }
 
         glfwMakeContextCurrent(m_wnd);
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
             glfwDestroyWindow(m_wnd);
+            glfwTerminate();
             return;
         }
     }
 
     Window::~Window() {
         glfwDestroyWindow(m_wnd);
+        glfwTerminate();
     }
 
     void Window::Run() const {
