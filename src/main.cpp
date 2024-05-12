@@ -1,5 +1,5 @@
-#include "app/window.h"
+#include "game/window.h"
 
 int main() {
-    orb::app::Window(800, 600, "Game").Run();
+    game::GameWindow().Run();
 }
